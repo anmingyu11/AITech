@@ -49,13 +49,11 @@ def reduce_mem_usage(df):
 X.query(‘train.query(q)’) 数据库查询的写法。
 ```
 
-```
+```py
+# 特征值是否包含对应的子字符串
 X[‘matchType'].str.contains('solo')
 ```
 
-```py
-df.select_dtypes(include=['float64'])
-```
 
 ```py
 # 填充不合法的值. infinity negtive infinity 等
@@ -79,5 +77,62 @@ X['matchtype'].apply(mapper)
 ```py
 #每种unique的matchId对应的条目数量
 X.groupby('matchId').size()
+
+```
+```py
+# 批量填充非法值
+def fillInf(df, val):
+    numcols = df.select_dtypes(include='number').columns
+    cols = numcols[numcols != 'winPlacePerc']
+    df[df == np.Inf] = np.NaN
+    df[df == np.NINF] = np.NaN
+    for c in cols: 
+        df[c].fillna(val, inplace=True)
+```
+
+```py
+# 简单的看出两个特征之间的关系
+X.groupby(col).mean()[anothercol].plot.bar(ax=ax[0])
+
+```
+
+```py
+# 打印缺失值
+def missing_data(data):
+    total = data.isnull().sum()
+    percent = (data.isnull().sum()/data.isnull().count()*100)
+    tt = pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
+    types = []
+    for col in data.columns:
+        dtype = str(data[col].dtype)
+        types.append(dtype)
+    tt['Types'] = types
+    return(np.transpose(tt))
+```
+
+```py
+#显示所有列
+pd.set_option('display.max_columns', None)
+#显示所有行
+pd.set_option('display.max_rows', None)
+#设置value的显示长度为100，默认为50
+pd.set_option('max_colwidth',100)
+np.set_printoptions(threshold=np.inf)
+```
+
+```py 
+# 画出特征与
+def plot_feature_scatter(df1, df2, features):
+    i = 0
+    sns.set_style('whitegrid')
+    plt.figure()
+    fig, ax = plt.subplots(4 ,4 ,figsize=(14,14))
+
+    for feature in features:
+        i += 1
+        plt.subplot(4 ,4 ,i)
+        plt.scatter(df1[feature], df2[feature], marker='+')
+        plt.xlabel(feature, fontsize=9)
+    plt.show();
 
 ```
