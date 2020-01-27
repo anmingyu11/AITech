@@ -48,7 +48,7 @@ agg = df.groupby(['groupId']).size().to_frame('players_in_team')
 ### merge
 
 ```
-df = df.merge(agg,how='left',on=['groupId']) 
+df = df.merge(agg , how='left' , on=['groupId'])
 # 利用merge来将 groupId对应的players in team 数量合并到表中.
 ```
 
@@ -217,4 +217,103 @@ def fillInf(df, val):
     df[df == np.NINF] = np.NaN
     for c in cols: 
         df[c].fillna(val, inplace=True)
+```
+
+# [SCTP] 查看missing data
+
+```
+def check_missing_data(df):
+    flag=df.isna().sum().any()
+    if flag==True:
+        total = df.isnull().sum()
+        percent = (df.isnull().sum())/(df.isnull().count()*100)
+        output = pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
+        data_type = []
+        # written by MJ Bahmani
+        for col in df.columns:
+            dtype = str(df[col].dtype)
+            data_type.append(dtype)
+        output['Types'] = data_type
+        return(np.transpose(output))
+    else:
+        return(False)
+```
+
+# PANDAS按条件删除行
+Pandas怎样按条件删除行？
+
+```
+df = df.drop(some labels)
+```
+```
+df = df.drop(df[].index)
+```
+
+Example
+
+To remove all rows where column ‘score’ is < 50:
+
+```
+df = df.drop(df[df.score < 50].index)
+```
+
+In place version (as pointed out in comments)
+
+```
+df.drop(df[df.score < 50].index, inplace=True)
+```
+
+Multiple conditions
+
+(see Boolean Indexing)
+
+The operators are: | for or, & for and, and ~ for not. These must be grouped by using parentheses.
+
+To remove all rows where column 'score' is < 50 and > 20
+
+```
+df = df.drop(df[(df.score < 50) & (df.score > 20)].index)
+```
+
+# 生成一个日期序列
+
+```
+import pandas as pd
+from datetime import datetime
+def datelist(beginDate, endDate):
+    # beginDate, endDate是形如‘20160601’的字符串或datetime格式
+    date_l=[datetime.strftime(x,'%Y-%m-%d') for x in list(pd.date_range(start=beginDate, end=endDate))]
+    return date_l
+
+datelist('2016-01-01','2020-01-01')
+```
+
+# 删除DataFrame中值全为NaN或者包含有NaN的列或行
+
+### 删除NaN所在的行：
+
+#### 删除表中全部为NaN的行
+
+```
+df.dropna(axis=0,how='all')  
+```
+
+#### 删除表中含有任何NaN的行
+
+```
+df.dropna(axis=0,how='any') #drop all rows that have any NaN values
+```
+
+### 删除NaN所在的列：
+
+#### 删除表中全部为NaN的列
+
+```
+df.dropna(axis=1,how='all') 
+```
+
+#### 删除表中含有任何NaN的列
+
+```
+df.dropna(axis=1,how='any') #drop all rows that have any NaN values
 ```
