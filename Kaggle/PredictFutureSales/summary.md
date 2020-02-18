@@ -29,9 +29,8 @@
 #### 1. 传统的时间序列分析
 #### 2. 一个很好的Kernel所给与的提示
 #### 3. 混合模型的Stacking
-#### 4. 深度学习
-#### 5. 本竞赛涉及的特征工程技巧
-#### 6. 特征工程
+#### 4. 本竞赛涉及的特征工程技巧
+#### 5. 特征工程
 
 # 1) 时间序列分析
 
@@ -65,7 +64,7 @@ yt = St x Tt x Et
 - Tt是Tt时段的趋势周期分量
 - Et是t时段的剩余(或不规则或误差)分量，
 
- 
+
 ### 乘法模型
 
 ```
@@ -77,7 +76,7 @@ mpl.rcParams["figure.figsize"] = [12, 8]
 res = sm.tsa.seasonal_decompose(ts.values,freq=12,model="multiplicative")
 #plt.figure(figsize=(16,12))
 fig = res.plot()
-```	
+```
 
 ### 加法模型
 
@@ -216,7 +215,7 @@ print("----------Null value-----------")
 display(sale_train.isna().sum())
 print("----------Shape of Data----------")
 display(sale_train.shape)
-```  
+```
 
 #### 4. 对数据的探索是获得数据胜利的关键秘诀之一，简单的特征工程，加减乘除算比例交叉等等是无法让你在kaggle竞赛中获取胜利的，如果能够通过自己的生活常识，和对特征的观察，能够压榨出有实际意义的特征，比如泰坦尼克号的的甲板号，预测未来收入的商店所在城市，商品名称，共享单车的注册用户和非注册用户，这些特征对整个模型的预测都有非常大的程度，此处就像过去在玩《模拟城市》，就像星际争霸2里的serral，你对特征处理的越细，能够获得的分数越高。
 #### 5. 特征工程1：先验知识与机器学习相结合往往会得到更好的结果（商店的开关门日期），量纲统一（比如，货币种类不一样，如果这里有两个特征列，一个是美元，一个是卢布，那么可以做特征工程来将这两种货币统一化），商品打折会导致销量上涨，但是同样的商品id价格却发生了变化。
@@ -310,7 +309,7 @@ Ensemble architecture:
 
 #### 先看要干啥
 
-```
+```python
 # for kaggle competition, always look at sample_submission.csv first, so you know what you want to get
 # then train.csv and test.csv
 sub = pd.read_csv('../data/sample_submission.csv')
