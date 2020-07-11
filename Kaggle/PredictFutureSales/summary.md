@@ -238,7 +238,7 @@ display(sale_train.shape)
 
 ### 3. 时间序列特征
 
-#### Lag特征
+#### Lag特征：
 
 lag=[1,2,3,6,12] 
 

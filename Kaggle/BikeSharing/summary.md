@@ -51,199 +51,27 @@ Data Fields
 
 ## 1) RMSLE
 均方误差 （mean square error）MSE
-
-<math xmlns="http://www.w3.org/1998/Math/MathML">
-  <mi>M</mi>
-  <mi>S</mi>
-  <mi>E</mi>
-  <mo>=</mo>
-  <mfrac>
-    <mn>1</mn>
-    <mi>n</mi>
-  </mfrac>
-  <munderover>
-    <mo movablelimits="false">&#x2211;<!-- ∑ --></mo>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>i</mi>
-      <mo>=</mo>
-      <mn>1</mn>
-    </mrow>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>n</mi>
-    </mrow>
-  </munderover>
-  <mo stretchy="false">(</mo>
-  <msub>
-    <mi>y</mi>
-    <mi>i</mi>
-  </msub>
-  <mo>&#x2013;</mo>
-  <msub>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mover>
-        <mi>y</mi>
-        <mo stretchy="false">&#x005E;<!-- ^ --></mo>
-      </mover>
-    </mrow>
-    <mi>i</mi>
-  </msub>
-  <msup>
-    <mo stretchy="false">)</mo>
-    <mn>2</mn>
-  </msup>
-</math>
- 
-
+$$
+MSE = \frac{1}{n} \sum \limits_{i=1}^{n} (y_i – \hat{y}_i)^2
+$$
 均方根误差 （root mean squared error）RMSE
 
 均方根误差是均方误差开根号得到的结果
 
-<math xmlns="http://www.w3.org/1998/Math/MathML">
-  <mi>R</mi>
-  <mi>M</mi>
-  <mi>S</mi>
-  <mi>E</mi>
-  <mo>=</mo>
-  <msqrt>
-    <mfrac>
-      <mn>1</mn>
-      <mi>n</mi>
-    </mfrac>
-    <munderover>
-      <mo movablelimits="false">&#x2211;<!-- ∑ --></mo>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>i</mi>
-        <mo>=</mo>
-        <mn>1</mn>
-      </mrow>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>n</mi>
-      </mrow>
-    </munderover>
-    <mo stretchy="false">(</mo>
-    <msub>
-      <mi>y</mi>
-      <mi>i</mi>
-    </msub>
-    <mo>&#x2013;</mo>
-    <msub>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mover>
-          <mi>y</mi>
-          <mo stretchy="false">&#x005E;<!-- ^ --></mo>
-        </mover>
-      </mrow>
-      <mi>i</mi>
-    </msub>
-    <msup>
-      <mo stretchy="false">)</mo>
-      <mn>2</mn>
-    </msup>
-  </msqrt>
-</math>
- 
+$$
+RMSE =  \sqrt{ \frac{1}{n} \sum \limits_{i=1}^{n} (y_i – \hat{y}_i)^2 }
+$$
 
 平均绝对误差 （mean absolute error） MAE
 
-<math xmlns="http://www.w3.org/1998/Math/MathML">
-  <mi>M</mi>
-  <mi>A</mi>
-  <mi>E</mi>
-  <mo>=</mo>
-  <mfrac>
-    <mn>1</mn>
-    <mi>n</mi>
-  </mfrac>
-  <munderover>
-    <mo movablelimits="false">&#x2211;<!-- ∑ --></mo>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>i</mi>
-      <mo>=</mo>
-      <mn>1</mn>
-    </mrow>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>n</mi>
-    </mrow>
-  </munderover>
-  <mo fence="false" stretchy="false">&#x007C;<!-- | --></mo>
-  <msub>
-    <mi>y</mi>
-    <mi>i</mi>
-  </msub>
-  <mo>&#x2013;</mo>
-  <msub>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mover>
-        <mi>y</mi>
-        <mo stretchy="false">&#x005E;<!-- ^ --></mo>
-      </mover>
-    </mrow>
-    <mi>i</mi>
-  </msub>
-  <mo fence="false" stretchy="false">&#x007C;<!-- | --></mo>
-</math>
-
+$$
+MAE = \frac{1}{n} \sum \limits_{i=1}^{n} \lvert y_i – \hat{y}_i \rvert
+$$
 均方根对数误差 （root mean squared logarithmic error） RMSLE
 
-<math xmlns="http://www.w3.org/1998/Math/MathML">
-  <mi>R</mi>
-  <mi>M</mi>
-  <mi>S</mi>
-  <mi>L</mi>
-  <mi>E</mi>
-  <mo>=</mo>
-  <msqrt>
-    <mfrac>
-      <mn>1</mn>
-      <mi>n</mi>
-    </mfrac>
-    <munderover>
-      <mo movablelimits="false">&#x2211;<!-- ∑ --></mo>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>i</mi>
-        <mo>=</mo>
-        <mn>1</mn>
-      </mrow>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>n</mi>
-      </mrow>
-    </munderover>
-    <mo stretchy="false">(</mo>
-    <mi>l</mi>
-    <mi>o</mi>
-    <mi>g</mi>
-    <mo stretchy="false">(</mo>
-    <msub>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mover>
-          <mi>y</mi>
-          <mo stretchy="false">&#x005E;<!-- ^ --></mo>
-        </mover>
-      </mrow>
-      <mi>i</mi>
-    </msub>
-    <mo>+</mo>
-    <mn>1</mn>  f
-    <mo stretchy="false">)</mo>
-    <mo>&#x2013;</mo>
-    <mi>l</mi>
-    <mi>o</mi>
-    <mi>g</mi>
-    <mo stretchy="false">(</mo>
-    <msub>
-      <mi>y</mi>
-      <mi>i</mi>
-    </msub>
-    <mo>+</mo>
-    <mn>1</mn>
-    <mo stretchy="false">)</mo>
-    <msup>
-      <mo stretchy="false">)</mo>
-      <mn>2</mn>
-    </msup>
-  </msqrt>
-</math>
-
+$$
+RMSLE =  \sqrt{ \frac{1}{n} \sum \limits_{i=1}^{n} (log(\hat{y}_i  + 1) – log(y_i + 1) )^2 }
+$$
 使用RMSLE的好处一：
 
   假如真实值为1000，若果预测值是600，那么RMSE=400， RMSLE=0.510
@@ -345,7 +173,6 @@ similar context. We would be using the 'temp' and getting rid of the 'atemp' var
 
 翻译成人话就是，多重共线性会使得你更容易得到不显著的结果。另外还有一个推论就是，如果你得到了显著的结果，也就不用去管什么多重共线性的问题了。这也就是为什么我个人感觉审稿人拿多重共线性说事都是耍流氓：拿去审的稿件基本上不会不显著，如果人家的结果显著了还怀疑多重共线性的话，只能说审稿人自己统计没学好。
 
-
 --------------------------------------------------------
 
 ## 4) 缺失值分析
@@ -380,7 +207,7 @@ def translate_log(X):
 
 极度左偏的数据变得像正态
 
-```
+```python
 def plot_dist():
     # count
     fig = plt.figure(figsize=(12,12))
@@ -597,7 +424,7 @@ plot_rf()
 如何解决这个问题，就是将训练数据集中的看似无用的casual register两个变量分别提取出来，
 首先经过大量的EDA:分析出casual和register之间的关系，和他们与target的关系如：
 
-```
+```Python
 def plot_hour_hue_workingday():
     fig = plt.figure(figsize=(16,12))
     axes = fig.subplots(3,1)
